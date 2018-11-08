@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <NumberPicker
+        android:id="@+id/year"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dip"
+        android:layout_marginEnd="1dip"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <NumberPicker
+        android:id="@+id/month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dip"
+        android:layout_marginEnd="1dip"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <RelativeLayout
+        android:id="@+id/layout_pickDate"
+        android:background="@drawable/round_conner_layout"
+        android:layout_width="180dp"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="texts"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:id="@+id/txt_pickDate"
+            android:layout_width="100dp"
+            android:layout_height="50dp" />
+
+        <ImageView
+            android:src="@mipmap/down_arrow"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="20dp"
+            android:layout_height="30dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
