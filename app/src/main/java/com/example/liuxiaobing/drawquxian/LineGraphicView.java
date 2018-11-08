@@ -1,5 +1,6 @@
 package com.example.liuxiaobing.drawquxian;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -8,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.RectF;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -85,6 +87,7 @@ public class LineGraphicView extends View {
     private Path indexRectPath = null;
     private String daySumTips = null;
     private int curValueOfXData = -1;
+    private float mAnimProgress;
 
     public LineGraphicView(Context context) {
         this(context, null);
@@ -121,6 +124,12 @@ public class LineGraphicView extends View {
         midCirclePaint.setStyle(Style.FILL);
         midCirclePaint.setStrokeWidth(dip2px(2));
         midCirclePaint.setColor(res.getColor(R.color.color_E9A79B));    //初始为大圆圈的颜色
+        post(new Runnable() {
+            @Override
+            public void run() {
+                showAnimator();
+            }
+        });
     }
 
     @Override
@@ -204,6 +213,7 @@ public class LineGraphicView extends View {
     }
 
     private void drawScrollLine(Canvas canvas) {
+        drawAima(canvas);
         Point startp = new Point();
         Point endp = new Point();
         Paint linePaint = new Paint();
@@ -454,6 +464,15 @@ public class LineGraphicView extends View {
     }
 
 
+    private void drawAima(Canvas canvas){
+        canvas.clipRect(new RectF(
+                blwidh,
+                indexTrigleEdgeLenght - indexLinePaint.getStrokeWidth(),
+                (getRight() - getPaddingRight()) * mAnimProgress,
+                bheight + dip2px(15) + (int)offsetY)
+        );
+
+    }
 
     private float getValueByPosX(float x){
 
@@ -465,6 +484,21 @@ public class LineGraphicView extends View {
         }
         return -1;
 
+    }
+
+    /**
+     * 添加动画实现曲线，原理是使用 画布裁剪
+     */
+    public void showAnimator() {
+        ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(6000);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                mAnimProgress = (float) animation.getAnimatedValue();
+                invalidate();
+            }
+        });
+        animator.start();
     }
 
 

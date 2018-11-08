@@ -41,6 +41,12 @@ public class BezierMoveCtrlPointView3 extends View {
         endY = 350;
         path = new Path();
         points = new ArrayList<>();
+
+//        contorlX1 = (endX + startX) / 2;
+//        contorlY1 = startY;
+//
+//        contorlX2 = (endX + startX) / 2;
+//        contorlY2 = endY;
     }
     @Override
     protected void onDraw(Canvas canvas) {
@@ -57,10 +63,13 @@ public class BezierMoveCtrlPointView3 extends View {
         //绘制轨迹直线
         float p3x = (1 - t) * startX+ t* contorlX1;
         float p3y = (1 - t) *startY + t * contorlY1;
+
         float p4x = (1 - t) * contorlX1 + t * contorlX2;
         float p4y = (1 - t) * contorlY1 + t * contorlY2;
-        float p5x = (1 - t) * contorlX1+ t* contorlX2;
-        float p5y = (1 - t) *contorlY1 + t * contorlY2;
+
+        float p5x = (1 - t) * contorlX1 + t * contorlX2;
+        float p5y = (1 - t) * contorlY1 + t * contorlY2;
+
         float p6x = (1 - t) * contorlX2 + t * endX;
         float p6y = (1 - t) * contorlY2 + t * endY;
 
@@ -105,5 +114,20 @@ public class BezierMoveCtrlPointView3 extends View {
                 invalidate();
             }
         },50);
+
+        //draw2Beizeir(canvas);
+    }
+
+
+    /**
+     * 下图测试Beizeir 曲线
+     * @param canvas
+     */
+    private void draw2Beizeir(Canvas canvas){
+        Path path = new Path();
+        path.moveTo(startX, startY);
+        path.cubicTo(contorlX1, contorlY1, contorlX2, contorlY2, endX,endY);
+        canvas.drawPath(path, paint);
+
     }
 }

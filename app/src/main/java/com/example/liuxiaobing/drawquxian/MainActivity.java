@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
        }
         tu.setData(yList, xRawDatas, 1000, 1000 / yList.size());
 
-        testShowOnlyYearMonth();
+        //testShowOnlyYearMonth();
     }
 
 
