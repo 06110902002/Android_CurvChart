@@ -1,10 +1,14 @@
 package com.example.liuxiaobing.drawquxian;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.drm.DrmStore;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.NumberPicker;
+
+import com.example.liuxiaobing.drawquxian.bezierpath.BezierPathActivity;
 
 /**
  * Created by liuxiaobing
@@ -64,6 +68,18 @@ public class DateActivity extends Activity {
                 if(scrollState == SCROLL_STATE_IDLE){
                     System.out.println("65------stop:"+view.getValue());
                 }
+            }
+        });
+
+        testBezier();
+    }
+
+
+    private void testBezier(){
+        findViewById(R.id.Bezier).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DateActivity.this, BezierPathActivity.class));
             }
         });
     }

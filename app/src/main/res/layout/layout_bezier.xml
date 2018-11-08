@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--测试一阶Bezier -->
+   <!-- <com.example.liuxiaobing.drawquxian.bezierpath.BezierMoveCtrlPointView
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />-->
+
+    <!--测试二阶Bezier -->
+    <!--<com.example.liuxiaobing.drawquxian.bezierpath.BezierMoveCtrlPointView2
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />-->
+
+    <com.example.liuxiaobing.drawquxian.bezierpath.BezierMoveCtrlPointView3
+        android:layout_width="match_parent"
+        android:layout_height="400dp" />
+
+</LinearLayout>
